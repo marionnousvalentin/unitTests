@@ -5,9 +5,7 @@ import { sendMail } from "@src/libs/mails";
 
 mockdate.set("2019-11-10T10:00:00.00Z");
 
-jest.mock("@src/libs/mails", () => ({
-  sendMail: jest.fn().mockResolvedValue("fakeMail")
-}));
+jest.mock("@src/libs/mails");
 
 describe("[Module] mail", () => {
   beforeEach(() => {

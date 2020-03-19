@@ -16,7 +16,11 @@ describe("[Module] mail", () => {
   const date = moment().add(3, "days");
   it("should call sendMal", async () => {
     const resolvedValue = await computeDueDateAndSendMail(email);
-    expect(resolvedValue).toEqual("fakeMail");
+    expect(resolvedValue).toEqual({
+      email: "toto",
+      name: "name",
+      firstName: "firstName"
+    });
     expect(sendMail).toHaveBeenCalledWith(email, date);
   });
   it("should throw error when sendMAil throws", async () => {

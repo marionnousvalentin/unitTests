@@ -1,6 +1,6 @@
 import { Moment } from "moment";
 
-export const sendMail = async (
+export const sendMail = () => async (
   email: string,
   dueDate: Moment
 ): Promise<string> => {

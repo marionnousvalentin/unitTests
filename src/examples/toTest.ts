@@ -5,5 +5,5 @@ export const computeDueDateAndSendMail = async (
   email: string
 ): Promise<string> => {
   const dueDate = moment().add(3, "days");
-  return await sendMail(email, dueDate);
+  return await sendMail()(email, dueDate);
 };

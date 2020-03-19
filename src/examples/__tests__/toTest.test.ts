@@ -1,11 +1,11 @@
 import * as mockdate from "mockdate";
 import * as moment from "moment";
-import { computeDueDateAndSendMail } from "../toTest";
-import { sendMail } from "../../libs/mails";
+import { computeDueDateAndSendMail } from "@src/examples/toTest";
+import { sendMail } from "@src/libs/mails";
 
 mockdate.set("2019-11-10T10:00:00.00Z");
 
-jest.mock("../../libs/mails");
+jest.mock("@src/libs/mails");
 
 describe("[Module] mail", () => {
   beforeEach(() => {

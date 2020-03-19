@@ -19,10 +19,16 @@ describe("[Module] mail", () => {
 
   const email = "monEmail";
   const date = moment().add(3, "days");
+  let computeDueDateAndSendMail: any;
+
+  (attachProps as jest.Mock).mockImplementation(func => {
+    computeDueDateAndSendMail = func;
+  });
+
+  const mailer = new Mailer();
+
   it("should call sendMal with initial value", async () => {
-    const mailer = new Mailer();
-    mailer.email = email;
-    // expect(resolvedValue).toEqual(fakeData);
+    computeDueDateAndSendMail();
     expect(sendMail()).toHaveBeenCalledWith(
       "initEmail",
       date,
@@ -31,18 +37,16 @@ describe("[Module] mail", () => {
     expect(constructMail).toHaveBeenCalledWith();
   });
   it("should call sendMal with new value", async () => {
-    const mailer = new Mailer();
     mailer.email = email;
-    // expect(resolvedValue).toEqual(fakeData);
+    const resolvedValue = await computeDueDateAndSendMail();
+    expect(resolvedValue).toEqual(fakeData);
     expect(sendMail()).toHaveBeenCalledWith(email, date, expect.any(Function));
     expect(constructMail).toHaveBeenCalledWith();
   });
   it("should throw error when sendMAil throws", async () => {
     (sendMail() as jest.Mock).mockRejectedValueOnce(new Error("ERROR"));
     try {
-      const mailer = new Mailer();
-      mailer.email = email;
-      // await computeDueDateAndSendMail(email);
+      await computeDueDateAndSendMail();
     } catch (error) {
       expect(error.message).toEqual("ERROR");
     }

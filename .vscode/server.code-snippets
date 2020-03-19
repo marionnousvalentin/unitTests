@@ -1,0 +1,23 @@
+{
+  "test:describe": {
+    "prefix": "jest:describe",
+    "body": [
+      "describe('$1', () => {",
+      "beforeEach(() => {",
+      "jest.clearAllMocks();",
+      " });",
+      "  it('$2', () => {",
+      "    $3",
+      "  });",
+      "});"
+    ]
+  },
+  "test:import": {
+    "prefix": "jest:import",
+    "body": ["import {$1} from '$2';", "jest.mock('$2')"]
+  },
+  "test:mockRejectedValueOnce": {
+    "prefix": "jest:mockRejectedValueOnce",
+    "body": ["($1 as jest.Mock).mockRejectedValueOnce(new Error('$2'));"]
+  }
+}

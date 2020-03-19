@@ -1,3 +1,5 @@
 import { fakeData } from "@src/fixtures/email";
 
-export const sendMail = () => jest.fn().mockResolvedValue(fakeData);
+const sender = jest.fn().mockResolvedValue(fakeData);
+
+export const sendMail = () => sender;

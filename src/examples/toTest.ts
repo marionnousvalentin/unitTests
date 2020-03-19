@@ -3,7 +3,7 @@ import { sendMail } from "../libs/mails";
 
 export const computeDueDateAndSendMail = async (
   email: string
-): Promise<void> => {
+): Promise<string> => {
   const dueDate = moment().add(3, "days");
-  await sendMail(email, dueDate);
+  return await sendMail(email, dueDate);
 };

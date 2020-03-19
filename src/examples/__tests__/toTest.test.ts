@@ -19,4 +19,14 @@ describe("[Module] mail", () => {
     expect(resolvedValue).toEqual("fakeMail");
     expect(sendMail).toHaveBeenCalledWith(email, date);
   });
+  it("should throw error when sendMAil throws", async () => {
+    (sendMail as jest.Mock).mockRejectedValueOnce(new Error("ERROR"));
+    try {
+      await computeDueDateAndSendMail(email);
+    } catch (error) {
+      expect(error.message).toEqual("ERROR");
+    }
+    expect(sendMail).toHaveBeenCalledWith(email, date);
+    expect.assertions(2);
+  });
 });

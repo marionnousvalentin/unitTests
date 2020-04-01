@@ -44,10 +44,15 @@ describe("[Module] mail", () => {
     expect(constructMail).toHaveBeenCalledWith();
   });
   it("should not throw error when sendMAil throws", async () => {
-    (sendMail() as jest.Mock).mockRejectedValueOnce(new Error("ERROR"));
+    const handledPromise = new Promise((resolve, reject) => {
+      reject("ERROR");
+    });
+    (sendMail() as jest.Mock).mockImplementationOnce(() => handledPromise);
     await computeDueDateAndSendMail();
     expect(sendMail()).toHaveBeenCalledWith(email, date, expect.any(Function));
     expect(constructMail).not.toHaveBeenCalled();
-    // sendMails throws when next tests are running
+    try {
+      await handledPromise;
+    } catch (error) {}
   });
 });

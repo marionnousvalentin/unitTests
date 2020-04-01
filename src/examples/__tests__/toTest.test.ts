@@ -39,19 +39,15 @@ describe("[Module] mail", () => {
   it("should call sendMal with new value", async () => {
     mailer.email = email;
     const resolvedValue = await computeDueDateAndSendMail();
-    expect(resolvedValue).toEqual(fakeData);
+    expect(resolvedValue).toEqual(undefined);
     expect(sendMail()).toHaveBeenCalledWith(email, date, expect.any(Function));
     expect(constructMail).toHaveBeenCalledWith();
   });
-  it("should throw error when sendMAil throws", async () => {
+  it("should not throw error when sendMAil throws", async () => {
     (sendMail() as jest.Mock).mockRejectedValueOnce(new Error("ERROR"));
-    try {
-      await computeDueDateAndSendMail();
-    } catch (error) {
-      expect(error.message).toEqual("ERROR");
-    }
+    await computeDueDateAndSendMail();
     expect(sendMail()).toHaveBeenCalledWith(email, date, expect.any(Function));
     expect(constructMail).not.toHaveBeenCalled();
-    expect.assertions(3);
+    // sendMails throws when next tests are running
   });
 });

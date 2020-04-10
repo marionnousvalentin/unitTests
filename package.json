@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "jest",
-    "launch": "node -r ts-node/register --inspect=0.0.0.0:9234 . --transpile-only --ignore-watch node_modules --watch ./"
+    "launch": "ts-node-dev --inspect=0.0.0.0:9234 . --transpile-only --ignore-watch node_modules --watch ./"
   },
   "dependencies": {
     "express": "^4.17.1",

@@ -6,7 +6,6 @@
     "paths": {
       "@src/*": ["./src/*"]
     },
-    "outDir": "./dist",
     /* Strict Type-Checking Options */
     "strictNullChecks": true,
     "noImplicitAny": true,

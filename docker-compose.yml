@@ -1,0 +1,9 @@
+version: "2"
+
+services:
+  servertest:
+    build: .
+    command: yarn launch
+    ports:
+      - "3000:3000"
+      - "9234:9234"

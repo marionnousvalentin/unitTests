@@ -4,12 +4,12 @@
     /*Path rewriting*/
     "baseUrl": "./",
     "outDir": "./dist",
+    "inlineSourceMap": true,
     "paths": {
       "@src/*": ["./src/*"]
     },
     /* Strict Type-Checking Options */
     "strictNullChecks": true,
-    "noImplicitAny": true,
-    "sourceMap": true
+    "noImplicitAny": true
   }
 }

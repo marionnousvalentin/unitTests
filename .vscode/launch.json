@@ -10,7 +10,7 @@
       "preLaunchTask": "tsc-watch",
       "restart": true,
       "localRoot": "${workspaceFolder}",
-      "remoteRoot": ".",
+      "remoteRoot": "/",
       "sourceMaps": true
     }
   ]

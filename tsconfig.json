@@ -3,6 +3,7 @@
     "lib": ["es2017", "dom"],
     /*Path rewriting*/
     "baseUrl": "./",
+    "outDir": "./dist",
     "paths": {
       "@src/*": ["./src/*"]
     },

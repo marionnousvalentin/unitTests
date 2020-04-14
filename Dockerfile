@@ -1,9 +1,10 @@
 FROM node:10-stretch
 
-WORKDIR /src
-
-COPY . /src
+WORKDIR /server
+COPY package.json .
+COPY yarn.lock .
 RUN yarn
 
-EXPOSE 3000
+COPY tsconfig.json .
+
 CMD [ "yarn", "launch" ]

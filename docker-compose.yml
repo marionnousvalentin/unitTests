@@ -4,6 +4,8 @@ services:
   servertest:
     build: .
     command: yarn launch
+    volumes:
+      - ./src:/server/src
     ports:
       - "3000:3000"
       - "9234:9234"

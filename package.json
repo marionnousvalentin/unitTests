@@ -11,7 +11,7 @@
   "scripts": {
     "test": "jest",
     "launch": "ts-node-dev --inspect=0.0.0.0:9234 . --transpile-only --ignore-watch node_modules --watch ./src",
-    "dockerUp": "docker-compose up servertest"
+    "dockerUp": "docker-compose up --build servertest"
   },
   "dependencies": {
     "express": "^4.17.1",
